@@ -1,0 +1,113 @@
+main(function () {
+  var settings = {
+    general: {
+      label_config: "[Articulos vendidos]",
+      tooltip_config: "[Artículo]\n[Articulos vendidos]",
+      default_shape: "circle",
+      circle_chart_type: "rose",
+      default_palette:
+        "#003f5c;#2f4b7c;#665191;#a05195;#d45087;#f95d6a;#ff7c43;#ffa600",
+      label_placement: "in",
+      donut_inner_radius: 0.02,
+      default_size: 9,
+      highlight_on_hover: true,
+      highlight_alpha: 0.2,
+      labels_size_as_marks: false,
+      labels_colored_as_marks: true,
+      labels_opacity_as: "none",
+      label_font: "Consolas",
+      tooltip_align: "center",
+      title_size: 18,
+      title_font: "Consolas",
+      reference_lines_width: 4,
+      default_border_width: 1,
+      default_tooltip_size: 18,
+      default_label_size: 18,
+      label_vertical_align: "middle",
+      label_align: "center",
+      stroke_on_labels: true,
+    },
+    grammar: [
+      {
+        variable: "Articulos vendidos",
+        property: "AREA",
+        range: "uniform",
+        aggregation: "sum",
+        min: 0,
+      },
+      {
+        variable: "Artículo",
+        property: "COLOR",
+        legend: false,
+        interaction: "simple",
+        sort_type: "alphabetical",
+        sort_order: "desc",
+      },
+      { variable: "Articulos vendidos", property: "LABEL" },
+      { variable: "Articulos vendidos", property: "TOOLTIP" },
+      { variable: "Artículo", property: "TOOLTIP" },
+      {
+        variable: "Artículo",
+        property: "SUBDIVISION",
+        sort_type: "manual",
+        sort_categories: [
+          "Agua fresca lt (capuchino)",
+          "Agua fresca lt (limón con pepino)",
+          "Agua fresca lt (fresa con leche)",
+          "Agua fresca lt (frutas)",
+          "Agua fresca lt (horchata)",
+          "Agua fresca lt (jamaica)",
+          "Agua fresca lt (piña)",
+          "Agua fresca lt (sandia con fresa)",
+          "Agua fresca lt (tamarindo)",
+          "Agua fresca lt (vainilla)",
+        ],
+      },
+      {
+        variable: "Categoria",
+        property: "FILTER",
+        filter_type: "exclude",
+        excluded_categories: { Bebidas: true },
+      },
+      {
+        variable: "Artículo",
+        property: "FILTER",
+        filter_type: "exclude",
+        excluded_categories: {
+          "Agua fresca lt (capuchino)": true,
+          "Agua fresca lt (fresa con leche)": true,
+          "Agua fresca lt (frutas)": true,
+          "Agua fresca lt (horchata)": true,
+          "Agua fresca lt (jamaica)": true,
+          "Agua fresca lt (limón con pepino)": true,
+          "Agua fresca lt (piña)": true,
+          "Agua fresca lt (sandia con fresa)": true,
+          "Agua fresca lt (tamarindo)": true,
+          "Agua fresca lt (vainilla)": true,
+        },
+      },
+    ],
+  };
+  var data =
+    'Artículo;REF;Categoria;Articulos vendidos;Ventas brutas;Articulos reembolsados;Reembolsos;Descuentos;Ventas netas;Costo de los bienes;Beneficio bruto;Margen;Impuestos\n"+ Hamburguesa Tradicional";10102;"Hamburguesas";4;200;0;0;0;200;0;200;"100.00%";0\n"+Frijoles";10003;"Extra";1;15;0;0;0;15;0;15;"100.00%";0\n"1/2 Orden de Papas";10094;"Hamburguesas";2;60;0;0;0;60;0;60;"100.00%";0\n"Agua fresca lt (capuchino)";10090;"Bebidas";7;245;0;0;3.5;241.5;0;241.5;"100.00%";0\n"Agua fresca lt (fresa con leche)";10026;"Bebidas";26;910;0;0;24.5;885.5;0;885.5;"100.00%";0\n"Agua fresca lt (frutas)";10083;"Bebidas";4;140;0;0;0;140;0;140;"100.00%";0\n"Agua fresca lt (horchata)";10082;"Bebidas";56;1960;0;0;66.5;1893.5;0;1893.5;"100.00%";0\n"Agua fresca lt (jamaica)";10081;"Bebidas";41;1230;1;30;45;1155;0;1155;"100.00%";0\n"Agua fresca lt (limón con pepino)";10023;"Bebidas";76;2280;1;30;81;2169;0;2169;"100.00%";0\n"Agua fresca lt (piña)";10085;"Bebidas";16;480;0;0;12;468;0;468;"100.00%";0\n"Agua fresca lt (sandia con fresa)";10086;"Bebidas";19;570;1;30;12;528;0;528;"100.00%";0\n"Agua fresca lt (tamarindo)";10087;"Bebidas";25;750;0;0;15;735;0;735;"100.00%";0\n"Agua fresca lt (vainilla)";10088;"Bebidas";9;315;0;0;0;315;0;315;"100.00%";0\n"Agua sabor natural 1/2 lt (Fresa con leche)";10055;"Bebidas";4;72;0;0;7.2;64.8;0;64.8;"100.00%";0\n"Agua sabor natural 1/2 lt (Vainilla)";10049;"Bebidas";1;18;0;0;0;18;0;18;"100.00%";0\n"Agua sabor natural 1/2 lt (frutas)";10074;"Bebidas";5;90;0;0;5.4;84.6;0;84.6;"100.00%";0\n"Agua sabor natural 1/2 lt (horachata)";10072;"Bebidas";3;54;0;0;1.8;52.2;0;52.2;"100.00%";0\n"Agua sabor natural 1/2 lt (jamaica)";10071;"Bebidas";6;108;0;0;3.6;104.4;0;104.4;"100.00%";0\n"Agua sabor natural 1/2 lt (limón con pepino)";10030;"Bebidas";10;180;0;0;9;171;0;171;"100.00%";0\n"Agua sabor natural 1/2 lt (piña)";10079;"Bebidas";2;36;0;0;1.8;34.2;0;34.2;"100.00%";0\n"Agua sabor natural 1/2 lt (sandia con fresa)";10076;"Bebidas";3;54;0;0;3.6;50.4;0;50.4;"100.00%";0\n"Agua sabor natural 1/2 lt (tamarindo)";10078;"Bebidas";2;36;0;0;1.8;34.2;0;34.2;"100.00%";0\n"Alfredo Especial !";10003;"Especial";3;240;0;0;0;240;0;240;"100.00%";0\n"Baguette de milanesa";10027;"Sandwiches";57;4845;0;0;178.5;4666.5;0;4666.5;"100.00%";0\n"Burritos (bistec)";10034;"Desayunos";8;560;2;140;0;420;0;420;"100.00%";0\n"Burritos (chorizo)";10032;"Desayunos";9;630;0;0;21;609;0;609;"100.00%";0\n"Burritos (deshebrada)";10035;"Desayunos";16;1120;3;210;14;896;0;896;"100.00%";0\n"Burritos (milanesa)";10036;"Desayunos";2;140;0;0;7;133;0;133;"100.00%";0\n"Burritos (pastor)";10033;"Desayunos";3;210;0;0;14;196;0;196;"100.00%";0\n"Chilaquiles (rojos bistec)";10000;"Desayunos";29;2310;0;0;24;2286;0;2286;"100.00%";0\n"Chilaquiles (rojos pollo)";10041;"Desayunos";28;2240;0;0;32;2208;0;2208;"100.00%";0\n"Chilaquiles (verdes bistec)";10092;"Desayunos";21;1680;0;0;24;1656;0;1656;"100.00%";0\n"Chilaquiles (verdes pollo)";10091;"Desayunos";45;3580;0;0;56;3524;0;3524;"100.00%";0\n"Coca cola 600ml";10024;"Bebidas";19;570;0;0;30;540;0;540;"100.00%";0\n"Combo 2 Chilaquiles 2 Aguas";10016;"Desayunos";6;1134;0;0;18.9;1115.1;0;1115.1;"100.00%";0\n"Combo 2 tortas + 1 agua !";10062;"Tortas";128;9980;0;0;31.9;9948.1;0;9948.1;"100.00%";0\n"Combo 3x2 hamburguesas";10047;"Combos";5;845;0;0;0;845;0;845;"100.00%";0\n"Combo hamburguesas 3 x 2 !";10047;"Combos";67;12435;1;169;0;12266;0;12266;"100.00%";0\n"Ensalada Dulce";10020;"Ensaladas";23;1955;0;0;51;1904;0;1904;"100.00%";0\n"Ensalada primavera";10019;"Ensaladas";17;1445;0;0;76.5;1368.5;0;1368.5;"100.00%";0\n"Envio";10093;"Envios";360;7160;0;0;8;7152;0;7152;"100.00%";0\n"Especial Alfredo !";10045;"Especial";62;4953;0;0;0;4953;0;4953;"100.00%";0\n"Especial Chilaquiles ! (Roja / Bistec)";10047;"Especial";6;390;0;0;13;377;0;377;"100.00%";0\n"Especial Chilaquiles ! (Roja / Pollo)";10045;"Especial";3;195;0;0;0;195;0;195;"100.00%";0\n"Especial Chilaquiles ! (Verde / Bistec)";10044;"Especial";11;715;0;0;13;702;0;702;"100.00%";0\n"Especial Chilaquiles ! (Verde / Pollo)";10028;"Especial";27;1875;0;0;26;1849;0;1849;"100.00%";0\n"Especial Chilaquiles ! (Roja / Bistec)";10057;"Especial";20;1300;0;0;58.5;1241.5;0;1241.5;"100.00%";0\n"Especial Chilaquiles ! (Roja / Pollo)";10056;"Especial";41;2665;0;0;6.5;2658.5;0;2658.5;"100.00%";0\n"Especial Chilaquiles ! (Verde / Bistec)";10061;"Especial";28;1820;0;0;6.5;1813.5;0;1813.5;"100.00%";0\n"Especial Chilaquiles ! (Verde / Pollo)";10058;"Especial";48;3120;0;0;0;3120;0;3120;"100.00%";0\n"Especial Chilaquiles ! (verdes / bistec)";10028;"Especial";2;130;0;0;0;130;0;130;"100.00%";0\n"Especial Chilaquiles ! (verdes / pollo)";10016;"Especial";5;325;0;0;6.5;318.5;0;318.5;"100.00%";0\n"Especial Enchiladas !";10105;"Desayunos";14;826;0;0;35.4;790.6;0;790.6;"100.00%";0\n"Especial Hamburguesa Dave\'s !";10048;"Especial";46;3450;0;0;0;3450;0;3450;"100.00%";0\n"Especial hamburguesa hawaiana !";10104;"Especial";30;6077.5;0;0;0;6077.5;2250;3827.5;"62.98%";0\n"Especial Hamburguesa Trad 3x2 !";10044;"Especial";20;3000;0;0;6.67;2993.33;0;2993.33;"100.00%";0\n"Especial Milanesa !";10028;"Especial";10;780;0;0;0;780;0;780;"100.00%";0\n"Especial Omelette ! (SOLO)";10065;"Sin categoria";6;300;0;0;5;295;0;295;"100.00%";0\n"Especial Poblana !";10103;"Sin categoria";15;1199;0;0;0;1199;0;1199;"100.00%";0\n"Especial Sandwich !";10073;"Sin categoria";12;873;0;0;0;873;0;873;"100.00%";0\n"Especial Sandwich de Pollo !";10003;"Especial";14;1050;0;0;0;1050;0;1050;"100.00%";0\n"Especial Tacos !";10110;"Especial";3;150;0;0;0;150;0;150;"100.00%";0\n"Filete Especial";10108;"Especial";66;4620;0;0;0;4620;0;4620;"100.00%";0\n"Gorditas (bistec)";10051;"Desayunos";19;1130;0;0;24;1106;0;1106;"100.00%";0\n"Gorditas (chorizo)";10005;"Desayunos";8;480;0;0;12;468;0;468;"100.00%";0\n"Gorditas (deshebrada)";10052;"Desayunos";19;1120;0;0;48;1072;0;1072;"100.00%";0\n"Gorditas (milanesa)";10054;"Desayunos";2;110;0;0;0;110;0;110;"100.00%";0\n"Gorditas (pastor)";10050;"Desayunos";4;240;1;60;0;180;0;180;"100.00%";0\n"Gorditas Especial !";10107;"Desayunos";55;2750;0;0;0;2750;0;2750;"100.00%";0\n"Gorditas Especial !";10003;"Desayunos";3;150;0;0;0;150;0;150;"100.00%";0\n"Hamburguesa BBQ";10007;"Hamburguesas";53;4520;0;0;246.5;4273.5;0;4273.5;"100.00%";0\n"Hamburguesa Dave\'s";10010;"Hamburguesas";29;2485;0;0;59.5;2425.5;0;2425.5;"100.00%";0\n"Hamburguesa Dave\'s Especial !";10003;"Especial";1;75;0;0;0;75;0;75;"100.00%";0\n"Hamburguesa de pollo";10014;"Hamburguesas";78;5850;0;0;270;5580;0;5580;"100.00%";0\n"Hamburguesa Hawaiana";10011;"Hamburguesas";86;7340;1;85;276.25;6978.75;0;6978.75;"100.00%";0\n"Hamburguesa Jalapeño";10013;"Hamburguesas";19;1610;1;85;69.5;1455.5;0;1455.5;"100.00%";0\n"Hamburguesa Tradicional";10009;"Hamburguesas";171;12800;1;75;333.33;12391.67;0;12391.67;"100.00%";0\n"Milanesa de Pollo";10004;"Desayunos";159;15025;0;0;636.5;14388.5;0;14388.5;"100.00%";0\n"Omelette de jamón con champiñones (jamon)";10042;"Desayunos";1;60;0;0;0;60;0;60;"100.00%";0\n"Omelette de jamón con champiñones (jamon con chapiñones)";10001;"Desayunos";18;1080;0;0;48;1032;0;1032;"100.00%";0\n"Orden de Papas";10015;"Hamburguesas";44;2420;0;0;60.5;2359.5;0;2359.5;"100.00%";0\n"Pasta Alfredo";10017;"Pastas";82;7350;0;0;288;7062;0;7062;"100.00%";0\n"Pasta Poblana";10018;"Pastas";48;4350;0;0;237;4113;0;4113;"100.00%";0\n"Promo Sandwich !";10075;"Combos";5;415;0;0;0;415;0;415;"100.00%";0\n"Quesadillas (bistec)";10038;"Desayunos";13;840;0;0;13;827;0;827;"100.00%";0\n"Quesadillas (chorizo)";10002;"Desayunos";17;1100;0;0;39;1061;0;1061;"100.00%";0\n"Quesadillas (deshebrada)";10039;"Desayunos";8;515;0;0;26;489;0;489;"100.00%";0\n"Quesadillas (milanesa)";10046;"Desayunos";15;970;0;0;39;931;0;931;"100.00%";0\n"Quesadillas (pastor)";10037;"Desayunos";4;260;0;0;6.5;253.5;0;253.5;"100.00%";0\n"Quesadillas";10002;"Desayunos";3;195;0;0;0;195;0;195;"100.00%";0\n"Quesadillas 2x50";10109;"Desayunos";1;50;0;0;0;50;0;50;"100.00%";0\n"Quesadillas 3 x 2 Especial !";10003;"Especial";7;420;0;0;0;420;0;420;"100.00%";0\n"Quesadillas especial !";10106;"Desayunos";41;2430;0;0;6;2424;0;2424;"100.00%";0\n"Sandwich Daves";10031;"Sandwiches";35;2800;0;0;152;2648;0;2648;"100.00%";0\n"Sandwich de pechuga de pollo";10025;"Sandwiches";83;7045;0;0;357;6688;0;6688;"100.00%";0\n"Torta (bistec)";10060;"Tortas";50;1750;0;0;42;1708;0;1708;"100.00%";0\n"Torta (chorizo)";10012;"Tortas";55;1935;0;0;14;1921;0;1921;"100.00%";0\n"Torta (deshebrada)";10068;"Tortas";72;2545;0;0;38.5;2506.5;0;2506.5;"100.00%";0\n"Torta (milanesa)";10063;"Tortas";398;13940;0;0;158.5;13781.5;0;13781.5;"100.00%";0\n"Torta (pastor)";10059;"Tortas";52;1800;0;0;24.5;1775.5;0;1775.5;"100.00%";0\n"Torta (salchicha)";10022;"Tortas";35;1210;0;0;0;1210;0;1210;"100.00%";0\n"Torta con asadero y papas fritas (bistec)";10067;"Tortas";15;900;0;0;30;870;0;870;"100.00%";0\n"Torta con asadero y papas fritas (chorizo)";10029;"Tortas";12;720;0;0;48;672;0;672;"100.00%";0\n"Torta con asadero y papas fritas (deshebrada)";10069;"Tortas";5;300;0;0;18;282;0;282;"100.00%";0\n"Torta con asadero y papas fritas (milanesa)";10070;"Tortas";71;4250;2;120;90;4040;0;4040;"100.00%";0\n"Torta con asadero y papas fritas (pastor)";10066;"Tortas";11;660;1;60;52.2;547.8;0;547.8;"100.00%";0\n"Torta con queso";10008;"Tortas";38;1710;0;0;22.5;1687.5;0;1687.5;"100.00%";0\n"Torta Dave\'s";10021;"Tortas";24;1200;0;0;30;1170;0;1170;"100.00%";0\n"Torta Dave\'s ruta";10016;"Ruta";1;40;0;0;0;40;0;40;"100.00%";0\n"Torta daves";10064;"Tortas";11;550;0;0;35;515;0;515;"100.00%";0\n';
+  var ds = new graphica.Dataset({
+    data: data,
+    datatypes: {
+      Artículo: "string",
+      REF: "number",
+      Categoria: "string",
+      "Articulos vendidos": "number",
+      "Ventas brutas": "number",
+      "Articulos reembolsados": "number",
+      Reembolsos: "number",
+      Descuentos: "number",
+      "Ventas netas": "number",
+      "Costo de los bienes": "number",
+      "Beneficio bruto": "number",
+      Margen: "string",
+      Impuestos: "number",
+    },
+  }).done(function () {
+    new graphica.Chart(this).add("chartid", settings);
+  });
+});
